@@ -61,6 +61,12 @@ FROM post AS P
 LEFT JOIN usuarios AS u ON u.id = p.usuario_id
 WHERE u.rol = 'administrador';
 
+-- tambien es valido:
+-- SELECT p.id, p.titulo, p.contenido
+-- FROM post AS p
+-- LEFT JOIN usuarios AS u ON u.id = p.usuario_id AND u.rol = 'administrador';
+
+
 -- ejercicio 4
 SELECT u.id, u.email, COUNT(p.id) AS cantidad_posts
 FROM usuarios AS u
@@ -116,7 +122,7 @@ LEFT JOIN (
 ) AS c ON u.id = c.usuario_id;
 
 -- ejercicio 10
-SELECT u.id, u.email, COUNT(p.id) AS cantidad_posts
+SELECT u.email
 FROM usuarios AS u
 LEFT JOIN post AS p ON u.id = p.usuario_id
 GROUP BY u.id, u.email
